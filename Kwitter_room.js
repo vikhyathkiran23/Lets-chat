@@ -1,11 +1,14 @@
-var firebaseConfig = {
+// Your web app's Firebase configuration
+const firebaseConfig = {
   apiKey: "AIzaSyDzeyFopk-wYX8Boh6OclVBdjHL9OjXFS8",
   authDomain: "let-s-chat-2dc64.firebaseapp.com",
+  databaseURL: "https://let-s-chat-2dc64-default-rtdb.firebaseio.com",
   projectId: "let-s-chat-2dc64",
   storageBucket: "let-s-chat-2dc64.appspot.com",
   messagingSenderId: "551087854037",
   appId: "1:551087854037:web:ce4c894360dc063140ed5c"
 };
+
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
 
@@ -33,7 +36,8 @@ getData();
 
 function addRoom() {
   Room_Name = document.getElementById("Room_Name_Input").value;
-  if (Room_Name == "" || " ") {
+  console.log(Room_Name);
+  if (Room_Name == "") {
     window.alert("The message cannot be blank");
   } else {
     localStorage.setItem("Room_Name", Room_Name);
@@ -48,4 +52,10 @@ function redirectToRoomName(Room_ID) {
   console.log(Room_ID);
   localStorage.setItem("Room_Name", Room_ID);
   window.location = "kwitter_page.html";
+}
+
+function logout(){
+    localStorage.removeItem("Username");
+      localStorage.removeItem("Room_Name");
+      window.location="index.html";
 }
